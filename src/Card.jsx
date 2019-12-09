@@ -5,6 +5,10 @@ import './Card.css';
 import Animal from './Animal';
 
 export default function Card({ animal, uncovered }) {
+  function handleClick(event, prop) {
+    console.log(`${prop} clicked, ${event}`);
+  }
+
   const front = (
     <div className="card">
       <h1>{animal.name ? animal.name : 'Unbekannt'}</h1>
@@ -14,7 +18,7 @@ export default function Card({ animal, uncovered }) {
           {Object.keys(Animal.properties).map(property => {
             const animalProperty = Animal.properties[property];
             return (
-              <tr key={property}>
+              <tr key={property} onClick={$event => handleClick($event, property)}>
                 <td>{animalProperty.label}</td>
                 <td>
                   {animal[property]}&nbsp;
