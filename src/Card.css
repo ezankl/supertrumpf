@@ -17,6 +17,10 @@ table {
   border-collapse: collapse;
 }
 
+tr {
+  cursor: pointer;
+}
+
 td {
   padding: 5px 0;
 }
@@ -34,4 +38,9 @@ img {
 .back {
   height: 388px;
   background-color: green;
+}
+
+tr:nth-child(2n-1).active,
+.active {
+  background-color: yellow;
 }

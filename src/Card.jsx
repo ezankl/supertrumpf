@@ -4,21 +4,30 @@ import PropTypes from 'prop-types';
 import './Card.css';
 import Animal from './Animal';
 
-export default function Card({ animal, uncovered }) {
-  function handleClick(event, prop) {
-    console.log(`${prop} clicked, ${event}`);
-  }
-
+export default function Card({ animal, uncovered, onSelectProperty, selectedProperty }) {
   const front = (
     <div className="card">
       <h1>{animal.name ? animal.name : 'Unbekannt'}</h1>
-      {animal.image && <img alt="Elefant" height="200" width="200" src={`${process.env.PUBLIC_URL}/${animal.image}`} />}
+      {animal.image && (
+        <img
+          alt="Elefant"
+          height="200"
+          width="200"
+          src={`${process.env.PUBLIC_URL}/${animal.image}`}
+        />
+      )}
       <table>
         <tbody>
           {Object.keys(Animal.properties).map(property => {
             const animalProperty = Animal.properties[property];
             return (
-              <tr key={property} onClick={$event => handleClick($event, property)}>
+              <tr
+                key={property}
+                className={selectedProperty === property ? 'active' : ''}
+                onClick={() => {
+                  onSelectProperty(property);
+                }}
+              >
                 <td>{animalProperty.label}</td>
                 <td>
                   {animal[property]}&nbsp;
@@ -43,13 +52,7 @@ export default function Card({ animal, uncovered }) {
 
 Card.propTypes = {
   uncovered: PropTypes.bool.isRequired,
-  animal: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    size: PropTypes.number.isRequired,
-    weight: PropTypes.number.isRequired,
-    age: PropTypes.number.isRequired,
-    offspring: PropTypes.number.isRequired,
-    speed: PropTypes.number.isRequired
-  })
+  animal: PropTypes.instanceOf(Animal).isRequired,
+  onSelectProperty: PropTypes.func,
+  selectedProperty: PropTypes.string
 };
