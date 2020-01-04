@@ -7,7 +7,7 @@ import Animal from './Animal';
 export default class DealCards extends React.Component {
   state = {
     computer: [],
-    player: []
+    player: [],
   };
 
   async componentDidMount() {
@@ -38,7 +38,7 @@ export default class DealCards extends React.Component {
     this.setState(state =>
       update(state, {
         player: { $set: player },
-        computer: { $set: computer }
+        computer: { $set: computer },
       })
     );
   }

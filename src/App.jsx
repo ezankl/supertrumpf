@@ -3,31 +3,27 @@ import React from 'react';
 import './App.css';
 import Game from './Game.container';
 import DealCards from './DealCards';
+import DarkMode from './DarkMode';
 
-export default class Error extends React.Component {
+export default class App extends React.Component {
   state = {
-    error: null
+    darkMode: false,
   };
 
-  componentDidCatch(error, info) {
-    console.log(error, info);
-  }
-
-  static getDerivedStateFromError(error) {
-    return {
-      error: error.message
-    };
-  }
+  toggleDarkMode = () => {
+    this.setState(prevState => ({ darkMode: !prevState.darkMode }));
+  };
 
   render() {
-    if (this.state.error) {
-      return <div>Ein Fehler ist aufgetreten: {this.state.error}</div>;
-    } else {
-      return (
+    return (
+      <DarkMode.Provider value={this.state.darkMode}>
+        <button onClick={this.toggleDarkMode}>Toggle Dark Mode</button>
         <DealCards>
-          {(computer, player) => <Game computer={computer} player={player} title="Supertrumpf" />}
+          {(computer, player) => (
+            <Game computer={computer} player={player} title="Supertrumpf" />
+          )}
         </DealCards>
-      );
-    }
+      </DarkMode.Provider>
+    );
   }
 }

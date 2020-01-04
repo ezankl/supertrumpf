@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Game.css';
 import Card from './Card';
+import './Game.css';
 
 export default function Game({
   title,
@@ -11,12 +11,14 @@ export default function Game({
   computer,
   selectedProperty,
   computerUncovered,
-  play
+  play,
 }) {
   return (
-    <div>
+    <>
       <h1>{title}</h1>
-      <div className="info">{playersTurn ? 'Du bist' : 'Der Computer ist'} an der Reihe</div>
+      <div className="info">
+        {playersTurn ? 'Du bist' : 'Der Computer ist'} an der Reihe
+      </div>
       <div className="cards">
         {player[0] && (
           <Card
@@ -34,7 +36,7 @@ export default function Game({
           />
         )}
       </div>
-    </div>
+    </>
   );
 }
 
@@ -45,5 +47,5 @@ Game.propTypes = {
   computer: PropTypes.array.isRequired,
   selectedProperty: PropTypes.string.isRequired,
   computerUncovered: PropTypes.bool.isRequired,
-  play: PropTypes.func.isRequired
+  play: PropTypes.func.isRequired,
 };

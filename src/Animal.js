@@ -4,7 +4,7 @@ export default class Animal {
     weight: { label: 'Gewicht', unit: 'kg' },
     age: { label: 'Alter', unit: 'Jahre' },
     offspring: { label: 'Nachkommen', unit: '' },
-    speed: { label: 'Geschwindigkeit', unit: 'km/h' }
+    speed: { label: 'Geschwindigkeit', unit: 'km/h' },
   };
 
   constructor(name, image, size, weight, age, offspring, speed) {

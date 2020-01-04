@@ -9,7 +9,26 @@ h1 {
   width: 200px;
   margin: 15px;
   padding: 15px;
-  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0, 0.25);
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.light .card {
+  color: black;
+  background-color: white;
+}
+
+.dark .card {
+  color: #eee;
+  background-color: black;
+}
+
+.dark tr:nth-child(2n -1) {
+  background-color: #666;
+}
+
+tr:nth-child(2n -1).active,
+.active {
+  background-color: yellow;
 }
 
 table {
@@ -17,15 +36,11 @@ table {
   border-collapse: collapse;
 }
 
-tr {
-  cursor: pointer;
-}
-
 td {
   padding: 5px 0;
 }
 
-tr:nth-child(2n-1) {
+tr:nth-child(2n -1) {
   background-color: #ddd;
 }
 
@@ -37,10 +52,12 @@ img {
 
 .back {
   height: 388px;
-  background-color: green;
 }
 
-tr:nth-child(2n-1).active,
-.active {
-  background-color: yellow;
+.light .back {
+  background-color: lightgreen;
+}
+
+.dark .back {
+  background-color: darkgreen;
 }
